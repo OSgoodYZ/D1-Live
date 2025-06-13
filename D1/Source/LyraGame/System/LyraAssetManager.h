@@ -7,6 +7,7 @@
 #include "Templates/SubclassOf.h"
 #include "LyraAssetManager.generated.h"
 
+class UD1CharacterData;
 class UPrimaryDataAsset;
 
 class ULyraGameData;
@@ -50,6 +51,8 @@ public:
 
 	const ULyraGameData& GetGameData();
 	const ULyraPawnData* GetDefaultPawnData() const;
+	const UD1CharacterData& GetCharacterData();
+	
 
 protected:
 	template <typename GameDataClass>
@@ -93,6 +96,9 @@ protected:
 	// Pawn data used when spawning player pawns if there isn't one set on the player state.
 	UPROPERTY(Config)
 	TSoftObjectPtr<ULyraPawnData> DefaultPawnData;
+
+	UPROPERTY(Config)
+	TSoftObjectPtr<UD1CharacterData> CharacterDataPath;
 
 private:
 	// Flushes the StartupJobs array. Processes all startup work.
